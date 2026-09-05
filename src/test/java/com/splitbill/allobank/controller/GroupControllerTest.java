@@ -117,11 +117,11 @@ class GroupControllerTest {
 
         when(groupRepository.findById(1L)).thenReturn(Optional.of(group));
         when(expenseRepository.findAll()).thenReturn(Collections.emptyList());
-        when(settlementService.calculateSettlement(eq(group), anyList(), eq("dennyprayudi")))
+        when(settlementService.calculateSettlement(eq(group), anyList(), eq("nugraharmd")))
                 .thenReturn(response);
 
         mockMvc.perform(get("/groups/1/settlement")
-                .param("githubUsername", "dennyprayudi"))
+                .param("githubUsername", "nugraharmd"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.totalExpenses").value(150))
                 .andExpect(jsonPath("$.serviceChargePct").value(2))
